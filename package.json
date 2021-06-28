@@ -1,33 +1,20 @@
 {
-  "name": "searchable_selectbox",
-  "version": "1.0.0",
+  "name": "reactnative-searchable-selectbox",
+  "version": "1.0.2",
   "description": "searchable selectbox component for react native",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "react",
-    "react-component",
-    "react-native",
-    "ios",
-    "android",
-    "material",
-    "dropdown",
+   "react-native",
     "selectbox",
-    "select",
-    "multi selection",
-    "multi list",
-    "multi searchable selectbox",
     "searchable-selectbox",
-    "react-native-searchable-selectbox",
-    "react searchable selectbox",
-    "react searchable list",
-    "react auto search selectbox"
+    "reactnative-searchable-selectbox"
   ],
   "author": "hossein ghanbari <hossein.ghanbari.hg73@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git://github.com/hossein-ghanbari/searchable_selectbox"
+    "url": "git://github.com/hossein-ghanbari/reactnative-searchable-selectbox"
   }
 }
