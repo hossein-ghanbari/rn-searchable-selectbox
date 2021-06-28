@@ -1,5 +1,5 @@
 {
-  "name": "reactnative-searchable-selectbox",
+  "name": "rn-searchable-selectbox",
   "version": "1.0.2",
   "description": "searchable selectbox component for react native",
   "main": "index.js",
@@ -10,11 +10,12 @@
    "react-native",
     "selectbox",
     "searchable-selectbox",
-    "reactnative-searchable-selectbox"
+    "react-native-searchable-selectbox"
+    "rn-searchable-selectbox"
   ],
   "author": "hossein ghanbari <hossein.ghanbari.hg73@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git://github.com/hossein-ghanbari/reactnative-searchable-selectbox"
+    "url": "git://github.com/hossein-ghanbari/rn-searchable-selectbox"
   }
 }
