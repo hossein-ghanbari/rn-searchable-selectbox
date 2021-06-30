@@ -2,7 +2,7 @@
 searchable selectbox component for react native
 
 <SearchableSelectbox
-  <br />    
+  <br />
   data={data} 
   <br />
   withSeacrh={true}
