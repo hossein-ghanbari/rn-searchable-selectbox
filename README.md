@@ -31,4 +31,16 @@ onValueChange | {desc : 'evnet when value has change'}
 errorMsg | {type : string}  
 selectboxPlaceHolder | {type : string}  
 searchPlaceholder | {type : string}  
-(lebelStyle,selectboxStyle,selectboxTextStyle,errorTextStyle,modalHeaderTextStyle,searchInputStyle,listItemStyle) | {type : style object}  
+lebelStyle
+<br />
+selectboxStyle
+<br />
+selectboxTextStyle
+<br />
+errorTextStyle
+<br />
+modalHeaderTextStyle
+<br />
+searchInputStyle
+<br />
+listItemStyle | {type : style object}  
