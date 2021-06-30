@@ -10,16 +10,15 @@ searchable selectbox component for react native
   selectboxPlaceHolder="Select"
   searchPlaceholder="Search"
 />
-
---- props ---
-
-data : {type : array}
-withSeacrh : {type : bool}
-label : {type : string}
-selectedValue : {type : object}
-onValueChange : {desc : 'evnet when value has change'}
-errorMsg : {type : string}
-selectboxPlaceHolder : {type : string}
-searchPlaceholder : {type : string}
-
-(lebelStyle,selectboxStyle,selectboxTextStyle,errorTextStyle,modalHeaderTextStyle,searchInputStyle,listItemStyle) : {type : style object}
+  
+  props | desc
+------------ | -------------
+data | {type : array}
+withSeacrh | {type : bool}
+label | {type : string}  
+selectedValue | {type : object}  
+onValueChange | {desc : 'evnet when value has change'} 
+errorMsg | {type : string}  
+selectboxPlaceHolder | {type : string}  
+searchPlaceholder | {type : string}  
+(lebelStyle,selectboxStyle,selectboxTextStyle,errorTextStyle,modalHeaderTextStyle,searchInputStyle,listItemStyle) | {type : style object}  
