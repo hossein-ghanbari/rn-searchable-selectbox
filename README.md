@@ -3,19 +3,19 @@ searchable selectbox component for react native
 
 <SearchableSelectbox
     <br />
-    *Tabspace* data={data} 
+    data={data} 
     <br />
-    *Tabspace* withSeacrh={true}
+    withSeacrh={true}
     <br />
-    *Tabspace* label="Countries"
+    label="Countries"
     <br />
-    *Tabspace* selectedValue={selected}
+    selectedValue={selected}
     <br />
-    *Tabspace* onValueChange={(selectedValue) => setSelected(selectedValue)}
+    onValueChange={(selectedValue) => setSelected(selectedValue)}
     <br />
-    *Tabspace* selectboxPlaceHolder="Select"
+    selectboxPlaceHolder="Select"
     <br />
-    *Tabspace* searchPlaceholder="Search"
+    searchPlaceholder="Search"
     <br />
 />
   
