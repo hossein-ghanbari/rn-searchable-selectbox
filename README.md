@@ -1,7 +1,7 @@
 # rn-searchable-selectbox
 searchable selectbox component for react native
 
-![alt text](https://repository-images.githubusercontent.com/380928572/618bc500-d990-11eb-9c39-dcd18d8a476d)
+![alt text](https://repository-images.githubusercontent.com/380928572/d5223d80-dda7-11eb-8b67-aaf5fc711cae)
 
 <SearchableSelectbox
     <br />
