@@ -3,7 +3,7 @@ import { View, StyleSheet } from "react-native";
 import SearchableSelectbox from "./SearchableSelectbox";
 
 const App = () => {
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState([]); //if multi => array of object or empty array ; else => object or empty
 
   const data = [
     { label: "Afghanistan", id: 1 },
@@ -41,8 +41,9 @@ const App = () => {
   return (
     <View style={styles.container}>
       <SearchableSelectbox
-        data={data} 
+        data={data}
         withSeacrh={true}
+        multi={true}
         label="Countries"
         selectedValue={selected}
         onValueChange={(selectedValue) => setSelected(selectedValue)}

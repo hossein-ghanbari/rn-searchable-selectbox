@@ -28,6 +28,7 @@ const colors = {
 const SearchableSelectbox = ({
   data,
   withSeacrh,
+  multi,
   label,
   selectedValue,
   onValueChange,
@@ -41,6 +42,9 @@ const SearchableSelectbox = ({
   modalHeaderTextStyle,
   searchInputStyle,
   listItemStyle,
+  multiBadgeStyle,
+  multiBadgeTextStyle,
+  multiBadgeIconStyle,
 }) => {
   const [listData, setListData] = useState([]);
   const [modal, setModal] = useState(false);
@@ -54,16 +58,42 @@ const SearchableSelectbox = ({
   }, [data]);
 
   useEffect(() => {
-    if (modal && selectedValue) {
-      listRef.current.scrollToIndex({animated: true, index: selectedIndex});
+    if (modal && !multi) {
+      listRef?.current?.scrollToIndex({animated: true, index: selectedIndex});
     }
-  }, [modal, selectedValue, selectedIndex]);
+  }, [modal, selectedIndex, multi]);
+
+  useEffect(() => {
+    if (selectedValue && !multi) {
+      data?.forEach((element, index) => {
+        if (element?.id === selectedValue?.id) {
+          setSelectedIndex(index);
+        }
+      });
+    }
+  }, [data, selectedValue, selectedIndex, multi]);
 
   const handlePressItem = (itemData, itemIndex) => {
     setModal(false);
     setListData(data);
-    onValueChange(itemData);
-    setSelectedIndex(itemIndex);
+    if (multi) {
+      if (selectedValue?.length > 0) {
+        let found = false;
+        selectedValue?.forEach(element => {
+          if (element?.id === itemData?.id) {
+            found = true;
+          }
+        });
+        if (!found) {
+          onValueChange([...selectedValue, itemData]);
+        }
+      } else {
+        onValueChange([...selectedValue, itemData]);
+      }
+    } else {
+      onValueChange(itemData);
+      setSelectedIndex(itemIndex);
+    }
   };
 
   const handleChangeText = text => {
@@ -71,6 +101,13 @@ const SearchableSelectbox = ({
       item.label.toLowerCase().includes(text.toLowerCase().trim()),
     );
     setListData(results);
+  };
+
+  const removeMultiItem = id => {
+    const filter = selectedValue?.filter(element => {
+      return element?.id !== id;
+    });
+    onValueChange(filter);
   };
 
   return (
@@ -92,6 +129,28 @@ const SearchableSelectbox = ({
           </View>
         </TouchableOpacity>
         <Text style={[styles.error, errorTextStyle]}>{errorMsg}</Text>
+
+        <View style={styles.multiList}>
+          {multi &&
+            selectedValue?.map(item => {
+              return (
+                <TouchableOpacity
+                  activeOpacity={0.8}
+                  key={item.id}
+                  onPress={() => removeMultiItem(item.id)}
+                  style={[styles.multiListBadge, multiBadgeStyle]}>
+                  <Text
+                    style={[styles.multiListBadgeText, multiBadgeTextStyle]}>
+                    {item.label}
+                  </Text>
+                  <Text
+                    style={[styles.multiListBadgeIcon, multiBadgeIconStyle]}>
+                    ×
+                  </Text>
+                </TouchableOpacity>
+              );
+            })}
+        </View>
       </View>
 
       <Modal
@@ -125,6 +184,17 @@ const SearchableSelectbox = ({
             data={listData}
             style={[styles.list, withSeacrh && {marginTop: 10}]}
             renderItem={({item, index}) => {
+              let active = false;
+              if (!multi && selectedValue?.id === item.id) {
+                active = true;
+              }
+              if (multi) {
+                selectedValue?.forEach(element => {
+                  if (element?.id === item?.id) {
+                    active = true;
+                  }
+                });
+              }
               return (
                 <TouchableOpacity
                   activeOpacity={0.8}
@@ -134,7 +204,7 @@ const SearchableSelectbox = ({
                       styles.itemText,
                       listItemStyle,
                       index === 0 && styles.itemTextFirst,
-                      selectedValue?.id === item.id && styles.itemTextActive,
+                      active && styles.itemTextActive,
                     ]}>
                     {item.label}
                   </Text>
@@ -206,6 +276,32 @@ const styles = StyleSheet.create({
     color: colors.darkLighten,
     paddingBottom: 4,
     paddingHorizontal: 10,
+  },
+  multiList: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginHorizontal: -5,
+  },
+  multiListBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: colors.primary,
+    borderRadius: 6,
+    paddingVertical: 5,
+    paddingHorizontal: 5,
+    marginHorizontal: 5,
+    marginBottom: 10,
+  },
+  multiListBadgeText: {
+    fontSize: fontSize.sm,
+    color: colors.primary,
+    marginHorizontal: 5,
+  },
+  multiListBadgeIcon: {
+    fontSize: fontSize.lg + 2,
+    color: colors.primary,
+    marginHorizontal: 5,
   },
   modal: {
     backgroundColor: colors.white,
